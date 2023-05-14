@@ -23,7 +23,7 @@ const {title, content, role, open = "0"} = Astro.props
 
 <script>
     const allExpandableCards = document.querySelectorAll('.expandable-card') as NodeListOf<HTMLElement>
-    let lastExpandableCard = null as HTMLElement
+    let lastExpandableCard : HTMLElement
 
     allExpandableCards.forEach((expandableCard, i) => {
         let header = expandableCard.querySelector('.header') as HTMLElement
@@ -43,24 +43,22 @@ const {title, content, role, open = "0"} = Astro.props
         header.onclick = () => {
             
             
-            let open = header.parentElement.getAttribute("data-open") as any
-            open = Number(open) 
-            open = Boolean(open) 
+            let open = header.parentElement && Boolean(Number(header.parentElement.getAttribute("data-open")))
 
             if(open){
                 content.animate([{maxHeight : '0px', padding:'0px 0px'}], {duration : 600, fill : 'forwards'})
                 crossLine.animate([{width : '20px'}], {duration : 300, fill : 'forwards'})
-                header.parentElement.setAttribute("data-open", "0")
+                header.parentElement && header.parentElement.setAttribute("data-open", "0")
             }
             else{
                 if(lastExpandableCard && lastExpandableCard != allExpandableCards[i]){
                     let lastExpandableCardContent = lastExpandableCard.querySelector('.content')
                     let lastExpandableCardLine = lastExpandableCard.querySelector('.cross-line')
                     lastExpandableCard.setAttribute("data-open","0")
-                    lastExpandableCardContent.animate([{maxHeight : '0px', padding:'0px 0px'}], {duration : 600, fill : 'forwards'})
-                    lastExpandableCardLine.animate([{width : '20px'}], {duration : 300, fill : 'forwards'})
+                    lastExpandableCardContent && lastExpandableCardContent.animate([{maxHeight : '0px', padding:'0px 0px'}], {duration : 600, fill : 'forwards'})
+                    lastExpandableCardLine && lastExpandableCardLine.animate([{width : '20px'}], {duration : 300, fill : 'forwards'})
                 }
-                header.parentElement.setAttribute("data-open", "1")
+                header.parentElement && header.parentElement.setAttribute("data-open", "1")
                 content.animate([{maxHeight : '1000px', padding:'14px 0px'}], {duration : 600, fill : 'forwards'})
                 crossLine.animate([{width : '0px'}], {duration : 300, fill : 'forwards'})
 
