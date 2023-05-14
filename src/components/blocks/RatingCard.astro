@@ -1,0 +1,20 @@
+---
+interface Props{
+    name? : string,
+    number? : string | number,
+    style? : string
+    variant? : "fill"
+}
+
+import {twMerge} from 'tailwind-merge'
+const {name, number, style, variant} = Astro.props
+---
+<div class={twMerge("inline-flex flex-col place-items-center px-7 py-2 md:hidden", style)}>
+    <p class="text-[24px] font-hand-dancing">{number}</p>
+    {!variant && <p class="text-[8px] font-bold">{name}</p>}
+</div>
+
+<div class={twMerge("md:inline-flex flex-col place-items-center px-12 py-5 hidden bg-[url('/images/icons/icon-board.svg')] bg-contain bg-center bg-no-repeat", style, variant && "bg-[url('/images/icons/icon-board-fill.svg')]")}>
+     <p class={`text-[16px] font-bold ${variant && "text-center text-white"}`} set:html={name}></p>
+     {!variant && <p class="text-[32px] font-hand-dancing">{number}</p>}
+</div> 

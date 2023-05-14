@@ -1,0 +1,73 @@
+---
+
+const {title, content, role, open = "0"} = Astro.props
+---
+<section data-open={open} class="overflow-hidden expandable-card">
+    <div class="header pt-4">
+        <div class=" text-secondary-color text-[16px] md:text-[24px] flex justify-between items-center">
+            <p class="font-semibold">{title}</p>
+            <div class="w-[20px] aspect-square flex items-center justify-center relative">
+                <div class="w-full h-[1px] bg-neutral-color absolute"></div>
+                <div class="cross-line w-full h-[1px] transform rotate-90 bg-neutral-color absolute"></div>
+                <!-- <div class="w-[2px] h-full bg-neutral-color absolute"></div> -->
+            </div>
+        </div>
+        {role && <p class="text-neutral-color mt-2 text-[12px] md:text-[16px]">{role}</p>}
+        <hr class="opacity-25 mt-4">
+    </div>
+    <div class="content text-[14px] text-secondary-color opacity-50 leading-[20px] py-4 pb-2 border-b-[1px] border-secondary-color border-opacity-25">
+        {content && <p set:html={content}></p>}
+        <slot />
+    </div>
+</section>
+
+<script>
+    const allExpandableCards = document.querySelectorAll('.expandable-card') as NodeListOf<HTMLElement>
+    let lastExpandableCard = null as HTMLElement
+
+    allExpandableCards.forEach((expandableCard, i) => {
+        let header = expandableCard.querySelector('.header') as HTMLElement
+        let content = expandableCard.querySelector('.content') as HTMLElement
+        let crossLine = expandableCard.querySelector('.cross-line') as HTMLElement
+        let originalHeight = content.getBoundingClientRect().height //we store the original height of each expandable card
+        lastExpandableCard = allExpandableCards[0]
+        
+        if( allExpandableCards[0] == expandableCard){
+            crossLine.animate([{width : '0px'}], {duration : 300, fill : 'forwards'})
+        }else{
+            content.style.maxHeight = '0px'
+            content.style.padding = '0px' //this line and the one above closses all the expandable cards
+        }
+
+        
+        header.onclick = () => {
+            
+            
+            let open = header.parentElement.getAttribute("data-open") as any
+            open = Number(open) 
+            open = Boolean(open) 
+
+            if(open){
+                content.animate([{maxHeight : '0px', padding:'0px 0px'}], {duration : 600, fill : 'forwards'})
+                crossLine.animate([{width : '20px'}], {duration : 300, fill : 'forwards'})
+                header.parentElement.setAttribute("data-open", "0")
+            }
+            else{
+                if(lastExpandableCard && lastExpandableCard != allExpandableCards[i]){
+                    let lastExpandableCardContent = lastExpandableCard.querySelector('.content')
+                    let lastExpandableCardLine = lastExpandableCard.querySelector('.cross-line')
+                    lastExpandableCard.setAttribute("data-open","0")
+                    lastExpandableCardContent.animate([{maxHeight : '0px', padding:'0px 0px'}], {duration : 600, fill : 'forwards'})
+                    lastExpandableCardLine.animate([{width : '20px'}], {duration : 300, fill : 'forwards'})
+                }
+                header.parentElement.setAttribute("data-open", "1")
+                content.animate([{maxHeight : '1000px', padding:'14px 0px'}], {duration : 600, fill : 'forwards'})
+                crossLine.animate([{width : '0px'}], {duration : 300, fill : 'forwards'})
+
+                lastExpandableCard = allExpandableCards[i]
+            }
+        
+            
+        }
+    })
+</script>

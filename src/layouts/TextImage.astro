@@ -1,0 +1,44 @@
+---
+interface Props{
+    url: string,
+    bodyStyle? : string
+    orientation? : 'top' | 'left' | 'right' | 'hide'
+    imageStyle? : string
+    style? : string
+}
+
+import Body from '@compo/Typography/Body.astro'
+import {twMerge} from 'tailwind-merge'
+
+const orientationStyles = {
+    'top' : {
+        img : "w-full aspect-video bg-center bg-no-repeat bg-contain",
+        parent : '',
+        body : ''
+    },
+    'right' : {
+        img : "w-full md:basis-[30%] aspect-video md:aspect-[9/12] max-h-[450px] bg-center bg-no-repeat bg-contain",
+        parent : 'md:flex  items-center gap-[16px]',
+        body : 'md:basis-[70%]'
+    },
+    'left' : {
+        img : "w-full md:basis-[30%] aspect-video md:aspect-[9/12] max-h-[450px] bg-center bg-no-repeat bg-contain",
+        parent : 'md:flex  items-center gap-[16px] md:flex-row-reverse',
+        body : 'md:basis-[70%]'
+    },
+    'hide' : {
+
+    }
+
+}
+
+const {url, bodyStyle, orientation = 'right', style, imageStyle} = Astro.props
+---
+<div class={twMerge(orientationStyles[orientation].parent, style)}>
+    <div style={`background-image: url('${url}');`} class={twMerge(orientationStyles[orientation].img, imageStyle)}></div>
+    <Body style={twMerge(orientationStyles[orientation].body, bodyStyle)}><slot /></Body>
+</div>
+
+<div class="grid bas ">
+
+</div>

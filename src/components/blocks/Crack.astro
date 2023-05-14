@@ -1,0 +1,49 @@
+---
+---
+<!-- <h1 class="text text-[56px] font-bold text-transparent inline-block">CRACK</h1> -->
+<div class="parent md:inline-block hidden ">
+<h1 class="text1 text-[24px] lg:text-[45px] xl:text-[56px] font-bold text-transparent inline-block">CRACK</h1>
+</div>
+
+<style>
+    .text{
+        background: radial-gradient(circle at center, red 0, blue, green 100%);
+        background-clip: text;   
+    }
+    .text1{
+        background-repeat: no-repeat;
+        font-family: 'Advent Pro', sans-serif;
+    }
+
+    .parent{
+        background-image: radial-gradient(50px at 25% 25%, gray 20%, transparent 100%);
+        background-clip: text;
+        background-size: 200% 200%;
+        background-position-x: 100%;
+        background-position-y: 120%;
+        background-repeat: no-repeat;
+    }
+</style>
+<script>
+    let text1 = document.querySelectorAll('.text1') as NodeListOf<HTMLElement>
+    let content = document.querySelectorAll('.parent') as NodeListOf<HTMLElement>
+
+    text1.forEach((ele, i) => ele.addEventListener('mousemove',(e)=>{
+        let elementWidth = e.currentTarget.offsetWidth 
+        let elementHeight = e.currentTarget.offsetHeight
+
+        let perCentagePosOfText1 = e.offsetX/elementWidth * 100
+        let perCentagePosYOfText1 = e.offsetY/elementHeight * 100
+
+        content[i].style.transition = 'none'
+        content[i].style.opacity = '1'
+        content[i].style.backgroundPosition = `${50-perCentagePosOfText1}% ${50-perCentagePosYOfText1}%`
+        content[i].style.transition = 'all 0.5s linear'
+    }))
+
+    text1.forEach((ele, i) => ele.onmouseleave = () => {
+
+        content[i].style.transition = 'all 0.5s ease'
+        content[i].style.opacity = '0'
+    })
+</script>

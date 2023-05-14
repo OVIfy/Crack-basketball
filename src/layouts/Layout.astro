@@ -1,0 +1,59 @@
+---
+const {title} = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@700&display=swap" rel="stylesheet"> -->
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Great+Vibes&family=Mrs+Saint+Delafield&family=Petit+Formal+Script&family=Sofia&family=Dancing+Script&display=swap" rel="stylesheet">
+		<title>{title}</title>
+	</head>
+	<slot name="header"/>
+	<body>
+		<!-- <div class="pointer-events-none opacity-0 w-3 h-3 bg-neutral-color normal fixed kur left-0 top-0 z-[500]"></div> -->
+		<slot />
+	</body>
+	<slot name="footer"/>
+</html>
+<!-- <style>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+   .pause {
+     animation-play-state: paused;
+   }
+}
+</style> -->
+<style>
+	@font-face{
+		font-family: "bilal";
+		src: url('/fonts/Bilal.otf') format('opentype');
+		font-weight: 600;
+		font-style: normal;
+	}
+
+	@font-face{
+		font-family: "cookie";
+		src: url('/fonts/Cookie.ttf') format('truetype');
+		font-weight:500;
+		font-style: normal;
+	}
+
+	.curses-carousel{
+		-webkit-user-select: none;
+		-webkit-user-drag: none;
+		-webkit-app-region: none;
+		touch-action: none;
+	}
+</style>

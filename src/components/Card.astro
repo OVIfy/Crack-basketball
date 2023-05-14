@@ -1,0 +1,47 @@
+---
+interface Prop{
+    titleText? : string
+    titleStyle? : string
+    Htype? : string
+    headingText? : string
+    headingStyle? : string
+    bodyText? : string
+    bodyStyle? : string
+    baseText? : string
+    buttonText? : string
+    actionText? : string
+}
+
+import { twMerge } from "tailwind-merge"
+const {titleText, inactive, noline, titleStyle, headingText, headingStyle, Htype = 'h1', bodyText, bodyStyle, baseText, buttonText, actionText, corner, w, h, cardStyle} = Astro.props
+import Button from "@compo/blocks/Button"
+---
+<div class={twMerge("@container relative w-full h-full bg-[#EEEEEE] card text-center sm:text-left", cardStyle)}>
+    <div class={twMerge('w-full' ,corner && `sm:p-6 after:content-[''] after:inline-block after:w-[100px] after:h-[100px] after:absolute after:bottom-0 after:left-0 after:z-[-1] after:border-neutral-color after:border-b-[3px] after:border-l-[3px]`)}>
+        <section style={`width: ${w && w}px; height: ${h && h};`} class={twMerge("w-full h-full  pt-9 pb-8 pr-8 pl-8 xl:pr-[52px] xl:pl-[48px] sm:py-[48px] bg-[#EEEEEE] z-[1]")}>
+            <div> <!-- header cont -->
+                {titleText && <Htype class={twMerge("text-[8px] xl:text-[12px] tracking-[3.76px] leading-3 title card-title", titleStyle)}>{titleText}</Htype>}
+                {headingText && <Htype 
+                    class={twMerge(
+                        "card-heading heading text-[32px] xl:text-[56px] xl:mt-[12px] font-bold leading-10 tracking-[2px] relative inline-block",
+                        "sm:after:hidden after:content-[''] after:w-[50%] after:h-[1.5px] after:block after:bg-neutral-color after:relative after:left-[23%]",
+                        "before:hidden before:content-[''] before:w-[1.5px] before:h-[90%] sm:before:block before:bg-neutral-color before:absolute before:-left-2 before:-top-4",
+                        noline && "sm:before:hidden",
+                        headingStyle
+                    )}
+                >{headingText}</Htype>}
+            </div>
+            
+            <div class="text-[11px] xl:text-[16px] xl:my-6 my-3 sm:mt-4 leading-[20px] lg:leading-[24px]"> <!--body section -->
+                {bodyText && <p set:html={bodyText} data-body class={twMerge('body card-body',bodyStyle)}></p>}
+                {baseText && <strong class="block my-3 sm:mt-4 card-base">{baseText}</strong>}
+                <slot />
+            </div>
+
+            <div class="text-[11px] inline-block"> <!--footer section -->
+                {buttonText && <Button inactive={inactive}>{buttonText}</Button>}
+                {actionText && <strong tabindex="0" class="act mouse-change block py-3 px-2 focus:text-neutral-color hover:text-neutral-color hover:cursor-pointer sm:text-center">{actionText}</strong>}
+            </div>
+        </section>
+    </div>
+</div>

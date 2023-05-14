@@ -1,0 +1,106 @@
+---
+interface Props{
+    headerText? : string
+    HeaderType? : string
+    carouselStyle : string
+}
+
+import TwoFace from "@compo/blocks/TwoFace.astro";
+import Heading from '@compo/Typography/Heading.astro'
+import { twMerge } from "tailwind-merge";
+
+
+const {headerText, HeaderType = '3', carouselStyle, variant = "1", count = '300'} = Astro.props
+---
+<div class="curses">
+    <div class="flex items-center justify-between">
+        <!-- <HeaderType>{headerText}</HeaderType> -->
+        {variant == '1' && <Heading level={HeaderType}>{headerText}</Heading>
+        <div class="inline-flex gap-8 items-center">
+            <div class="hover:cursor-pointer arrow-right transform rotate-[180deg] sm:hidden">
+                <TwoFace ratio='square' width="50px" url1="/images/icons/icon-arrow-b.svg" url2="/images/icons/icon-arrow-c.svg"/>
+            </div>
+            <div class="hover:cursor-pointer arrow-left sm:hidden">
+                <TwoFace ratio='square' width="50px" url1="/images/icons/icon-arrow-b.svg" url2="/images/icons/icon-arrow-c.svg"/>
+            </div>
+            <p class="hidden sm:block relative top-[30px]">Dont forget to hover :)</p>
+        </div>}
+
+        {variant == '2' && <div class="flex w-full items-center justify-between">
+            <div class="hover:cursor-pointer arrow-right transform rotate-[180deg]">
+                <TwoFace ratio='square' width="50px" url1="/images/icons/icon-arrow-b.svg" url2="/images/icons/icon-arrow-c.svg"/>
+            </div>
+            <div class="hover:cursor-pointer arrow-left">
+                <TwoFace ratio='square' width="50px" url1="/images/icons/icon-arrow-b.svg" url2="/images/icons/icon-arrow-c.svg"/>
+            </div>
+        </div>}
+    </div>
+    <div data-count={count} class={twMerge("whitespace-nowrap overflow-x-hidden curses-carousel gap-2 touch-none", carouselStyle)}>
+        <slot />
+    </div>
+</div>
+<style>
+    .curses-carousel{
+        user-select: none;
+    }
+</style>
+<script>
+    class Carousel{
+        carouselElement
+        rightArrow
+        leftArrow 
+        canDrag
+        startPos
+        count
+        constructor(carouselElement : HTMLElement){
+            this.carouselElement = carouselElement.querySelector('.curses-carousel') as HTMLElement
+            this.count = Number(this.carouselElement.getAttribute('data-count'))
+            this.leftArrow = carouselElement.querySelector('.arrow-left') as HTMLElement
+            this.rightArrow = carouselElement.querySelector('.arrow-right') as HTMLElement
+            this.canDrag = false
+            this.startPos = 0
+
+            this.carouselElement.onpointerdown = this.onCarouselDown.bind(this)
+            this.carouselElement.onpointermove = this.onCarouselMove.bind(this)
+            this.carouselElement.onpointerup = this.onCarouselUp.bind(this)
+            this.leftArrow.onclick = this.moveCarouselLeft.bind(this)
+            this.rightArrow.onclick = this.moveCarouselRight.bind(this)
+
+            console.log(this.count)
+        }
+
+        onCarouselDown(e : PointerEvent){
+            console.log(this.carouselElement)
+
+            this.carouselElement.style.scrollBehavior = 'auto'
+            this.startPos = e.screenX
+            this.canDrag = true
+        }
+
+        onCarouselMove(e : PointerEvent){
+            if(this.canDrag)
+            {
+                this.carouselElement.scrollLeft += (this.startPos - e.screenX)
+                this.startPos = e.screenX
+            }
+        }
+
+        onCarouselUp(e : PointerEvent){
+            this.canDrag = false
+        }
+
+        moveCarouselLeft(){
+            this.carouselElement.style.scrollBehavior = 'smooth'
+            this.carouselElement.scrollLeft += this.count
+        }
+
+        moveCarouselRight(){
+            this.carouselElement.style.scrollBehavior = 'smooth'
+            this.carouselElement.scrollLeft -= this.count
+        }
+    }
+
+    document.querySelectorAll('.curses').forEach(carouselElement => {
+        new Carousel(carouselElement)
+    })
+</script>

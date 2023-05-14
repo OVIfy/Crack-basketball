@@ -1,0 +1,73 @@
+---
+import IconDeck from "../blocks/IconDeck.astro";
+import TwoFace from "@compo/blocks/TwoFace.astro"
+const {index} = Astro.props
+---
+<header class="border-b-black border-b-[4px]">
+    
+    <!-- mobile header -->
+    <div class="pt-[54px] pb-3 px-5 md:py-11 lg:px-20">
+        <div class="hidden md:flex justify-between items-center">
+            <TwoFace ratio='slim' width="129px" url1="/images/icons/icon-espn-b.svg" url2="/images/icons/icon-espn-c.svg"/>
+            <ul class="sm:flex items-center justify-center hidden gap-8 md:gap-16">
+                <li><a href="/" class:list={["desk-link transition-all duration-700 hover:cursor-pointer hover:text-neutral-color font-bold", index == 0 && "text-neutral-color"]}>Home</a></li>
+                <li><a href="/about" class:list={["desk-link transition-all duration-700 hover:cursor-pointer hover:text-neutral-color font-bold", index == 1 && "text-neutral-color"]}>About</a></li>
+                <li><a href="/about/#contact" class:list={["text-secondary-color desk-link transition-all duration-700 hover:cursor-pointer bg-no-repeat font-bold py-2 px-4 inline-block bg-[url('/images/icons/icon-contact-btn.svg')]", index == 2 && "text-neutral-color"]}>Contact Us</a></li>
+            </ul>
+            <TwoFace ratio='rect' width="70px" url1="/images/icons/icon-nba-b.svg" url2="/images/icons/icon-nba-c.svg"/>
+        </div>
+
+        <div class="md:hidden">
+            <button class="open-nav-btn w-6 absolute h-4 my-[14px] mx-[10px] bg-[url('/images/icons/icon-ham.svg')] bg-center bg-contain bg-no-repeat"></button>
+            <div class="text-center">
+                <TwoFace ratio='slim' width="129px" url1="/images/icons/icon-espn-b.svg" url2="/images/icons/icon-espn-c.svg"/>
+            </div>
+        </div> 
+    </div>
+
+    <!-- mobile nav menu -->
+    <nav class="md:hidden mob-nav hide-nav transform absolute left-0 top-0 pl-4 pt-[68px] pb-[33px] pr-8 bg-white z-50 rounded-r-[40px] shadow-[2px_2px_10px] shadow-secondary-color/[0.2] -translate-x-[300px]">
+        <!-- first part -->
+        <div class="flex justify-between items-center">
+            <TwoFace ratio='rect' width="70px" url1="/images/icons/icon-nba-b.svg" url2="/images/icons/icon-nba-c.svg"/>
+            <div class="close-nav-btn mouse-change hover:cursor-pointer w-[24px] h-[16px] bg-center bg-no-repeat bg-[url('/images/icons/icon-nav-close.svg')]"></div>
+        </div>
+
+        <!-- second part -->
+        <ul class="mt-[41px] mb-[41px] text-[16px] font-bold text-secondary-color">
+             <li class="group"><a href="/" class:list={["transition-all duration-700 flex items-center group mob-link group-hover:text-primary-color", index == 0 && "text-primary-color"]}>Home <span class:list={["ml-2 transition-all duration-700 inline-block h-[5px] w-[5px] group-hover:bg-primary-color", index == 0 && "bg-primary-color"]}></span></a></li>
+             <li class="my-[40px] group"><a href="/about" class:list={["transition-all duration-700 flex items-center group mob-link group-hover:text-primary-color", index == 1 && "text-primary-color"]} >About <span class:list={["ml-2 transition-all duration-700 inline-block h-[5px] w-[5px] group-hover:bg-primary-color", index == 1 && "bg-primary-color"]}></span></a></li>
+             <li class="group"><a href="/about/#contact" class:list={["transition-all duration-700 flex items-center group mob-link group-hover:text-primary-color", index == 2 && "text-primary-color"]}>Get in touch  <span class:list={["ml-2 transition-all duration-700 inline-block h-[5px] w-[5px] group-hover:bg-primary-color", index == 2 && "bg-primary-color"]}></span></a></li>
+        </ul>
+
+        <!-- third part -->
+        <IconDeck
+             urls={[
+                 '/images/icons/icon-twitter.svg',
+                 '/images/icons/icon-insta.svg',
+                 '/images/icons/icon-mail.svg',
+                 '/images/icons/icon-door.svg'
+             ]} 
+             width="12px"
+             contStyle="flex-row p-2"
+         />
+     </nav>
+
+</header>
+<script>
+    const navOpenBtn = document.querySelector('.open-nav-btn') as HTMLElement
+    const navCloseBtn = document.querySelector('.close-nav-btn') as HTMLElement
+    const mobMenu = document.querySelector('.mob-nav') as HTMLElement
+
+    navOpenBtn.onclick = openNav
+    navCloseBtn.onclick = closeNav
+
+    function openNav(){
+        mobMenu.animate([{transform : 'translateX(0px)'}], {duration : 1000, fill:'forwards', easing : 'cubic-bezier(1,0,0,1)'})
+    }
+
+    function closeNav(){
+        mobMenu.animate([{transform : 'translateX(-300px)'}], {duration : 1000, fill:'forwards', easing : 'cubic-bezier(1,0,0,1)'})
+    }
+
+</script>

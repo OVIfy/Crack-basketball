@@ -1,0 +1,94 @@
+---
+import Footer from "@compo/Footer/Footer.astro";
+import FooterLine from "@compo/Footer/FooterLine.astro";
+import Crack from "@compo/blocks/Crack.astro";
+---
+<Footer
+slot="footer"
+footerStyle="mt-[64px] lg:mt-[104px] bg-[#333333] relative text-white"
+>
+<FooterLine 
+    headerText="Learn and Support"
+    mobContents={[
+        'Pencil Hoops with ESPN and NBA',
+        'Horror Vault with Spotify',
+        'Crack Headphones',
+        'Crack VR with Chelsea FC'
+    ]}
+/>
+<FooterLine 
+    headerText="Services"
+    mobContents={[
+        'Web Design & Development',
+        'App Design & Development',
+        'Product Design',
+        'Animation',
+        'Illustration'
+    ]}
+/>
+<FooterLine 
+    headerText="Horror Vault"
+    mobContents={[
+        'Handoff Documents',
+        'About Horror Vault'
+    ]}
+    deskContents={[
+        'Handoff Documents',
+        '<span class="hidden md:inline border-b-[1px] border-neutral-color text-neutral-color font-bold click-me">Click Me! ;)</span>',
+        'About Horror Vault'
+    ]}
+/>
+<FooterLine 
+    headerText="About CrackLabs"
+    mobContents={[
+        'Mission and Values'
+    ]}
+/>
+
+<div class="absolute top-0 left-[40%]">
+    <Crack />
+</div>
+
+<div class="absolute top-0 left-[60%]">
+    <Crack />
+</div>
+
+<div class="absolute top-0 left-[10%]">
+    <Crack />
+</div>
+
+<div class="absolute top-[100px] right-[25%]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-0 left-[60%] z-[20]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-0 left-[10%] z-[20]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-[200px] right-[50px] z-[20]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-[200px] left-[200px] z-[20]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-[180px] right-[18%] z-[20]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-[150px] left-[55%] z-[20]">
+    <Crack />
+</div>
+
+<div class="absolute bottom-[200px] left-[40%] z-[20]">
+    <Crack />
+</div>
+</Footer>
+<style>
+
+</style>

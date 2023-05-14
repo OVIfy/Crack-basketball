@@ -1,0 +1,36 @@
+---
+import {twMerge} from 'tailwind-merge'
+
+interface props{
+    level : keyof HeadingLevels,
+    text : string,
+    style : string
+}
+
+interface HeadingLevels{
+    "1" : string,
+    "2" : string,
+    "3" : string,
+}
+
+
+const HeadingLevel = {
+    "1" : "h1",
+    "2" : "h2",
+    "3" : "h3",
+    "4" : "h4"
+}
+
+const headingStyle = {
+    "1" : 'font-hand-sofia text-neutral-color md:text-[32px]',
+    "2" : 'font-bilal text-primary-color text-[24px] md:text-[56px]',
+    "3" : 'font-bold md:text-[24px] text-[14px]',
+    "4" : "font-hand-sofia text-neutral-color text-[14px] md:text-[20px]"
+}
+
+const {level = "1", text, style} = Astro.props
+
+const HeadingType = HeadingLevel[level]
+---
+
+<HeadingType class={twMerge(headingStyle[level], style)}><slot /></HeadingType>

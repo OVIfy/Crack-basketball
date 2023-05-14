@@ -1,0 +1,7 @@
+---
+const {text, Htype = 'h2'} = Astro.props
+---
+<>
+    <Htype class="text-secondary-color text-[56px] font-bold leading-[60px] " set:html={text}></Htype>
+    <div class="w-[80px] h-[1.5px] bg-neutral-color md:hidden"></div>
+</>

@@ -1,0 +1,27 @@
+---
+interface Props{
+    ratio : 'rect' | 'square' | 'slim',
+    width? : number | string,
+    min? : number | string,
+    max? : number | string,
+    url1 : string,
+    url2? : string,
+    style? : string
+}
+
+import {twMerge} from 'tailwind-merge'
+const {width = 210, min = 210, max, ratio = 'rect', url1, url2, style} = Astro.props
+
+const aspectRatio = {
+    'rect' : 'aspect-video',
+    'square' : 'aspect-square',
+    'slim': 'aspect-slim'
+}
+
+
+---
+
+<div style={`width: ${width}; min-width : ${min}; max-width : ${max};`} class={twMerge(aspectRatio[ratio], "relative group inline-block", style)}>
+    <div style={`background-image: url(${url1});`} class="w-full h-full bg-center bg-contain bg-no-repeat group-hover:opacity-0"></div>
+    <div style={`background-image: url(${url2});`} class="w-full h-full bg-center bg-contain bg-no-repeat absolute top-0 opacity-0 group-hover:opacity-100"></div>
+</div>

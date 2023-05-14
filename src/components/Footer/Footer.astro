@@ -1,0 +1,29 @@
+---
+import { twMerge } from "tailwind-merge";
+import IconDeck from "@compo/blocks/IconDeck.astro";
+
+const {footerStyle}  =  Astro.props
+---
+
+<footer class={twMerge("bg-primary-color", footerStyle)}>
+
+    <p class="py-[16px] text-center md:hidden"><span class="font-bold border-b-[1px] border-neutral-color text-neutral-color click-me">Click Me! ;)</span></p>
+    <div class="md:grid grid-cols-4 md:mx-5  justify-end lg:mx-20 lg:gap-[5%] lg:pt-[70px] lg:pb-4 border-y-[1px] border-secondary-color border-opacity-50">
+        <slot />
+    </div>
+    <div class="md:py-10 flex flex-col md:flex-row md:items-center md:justify-center relative">
+        <div class="py-6 md:p-[1px]  lg:mx-20 text-center  md:bg-gradient-to-r inline-block from-secondary-color to-neutral-color md:absolute right-3">
+            <IconDeck
+             urls={[
+                 '/images/icons/icon-twitter.svg',
+                 '/images/icons/icon-insta.svg',
+                 '/images/icons/icon-mail.svg',
+                 '/images/icons/icon-door.svg'
+             ]} 
+             width="12px"
+             contStyle="flex-row p-2"
+         />
+        </div>
+        <p class="text-[10px] lg:text-[16px] text-center justify-self-start text-secondary-color font-bold py-6 md:p-0 md:border-0 border-y-[1px] border-y-secondary-color border-opacity-50">Designed and Developed in <span class="text-neutral-color">CrackLabs</span></p>
+    </div>
+</footer>

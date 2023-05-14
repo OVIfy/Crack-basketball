@@ -1,0 +1,57 @@
+---
+export interface Prop{
+    headerText?
+    contents? : Array<string>
+}
+
+const {headerText, mobContents, deskContents} = Astro.props
+---
+<div class="bg-transparent md:hidden text-white w-full text-center md:text-left footer">
+    <div class="header hover:cursor-pointer border-y-[1px] md:border-0 border-secondary-color border-opacity-50 py-6 flex justify-center md:justify-start items-center gap-5">
+        <p class="font-bold lg:text-[24px] inline-block md:text-left">{headerText}</p>
+        <div class="arrow transform rotate-180 w-[12px] inline-block h-[12px] bg-center bg-contain bg-no-repeat bg-[url('/images/icons/icon-drop-down.svg')] md:hidden"></div>
+    </div>
+    <div class="flex hover:cursor-default md:h-[revert] flex-col gap-6 py-[14px] text-[12px] content overflow-y-hidden">
+        {mobContents && mobContents.map(content => <p set:html={content}></p>)}
+    </div>
+</div>
+<div class="bg-transparent hidden md:block text-white w-full text-center md:text-left">
+    <div class=" border-y-[1px] md:border-0 border-secondary-color border-opacity-50 py-6 flex justify-center md:justify-start items-center gap-5">
+        <p class="font-bold lg:text-[24px] inline-block md:text-left">{headerText}</p>
+        <div class=" w-[12px] inline-block h-[12px] bg-center bg-contain bg-no-repeat bg-[url('/images/icons/icon-drop-down.svg')] md:hidden"></div>
+    </div>
+    <div class="flex md:h-[revert] flex-col gap-6 py-[14px] text-[12px] overflow-y-hidden">
+        {deskContents && deskContents.map(content => <p set:html={content}></p>)}
+        {!deskContents && mobContents && mobContents.map(content => <p set:html={content}></p>)}
+    </div>
+</div>
+
+<script>
+    const allHeaders = document.querySelectorAll('.footer .header') as NodeListOf<HTMLElement>
+
+    allHeaders.forEach((header, i) => {
+        let content = header.parentElement.querySelector('.content') as HTMLElement
+        let arrow = header.parentElement.querySelector('.arrow')
+        let originalHeight = content.getBoundingClientRect().height
+        content.style.height = '0'
+        content.style.padding = '0'
+        let open = false
+        header.onclick = () => {
+            let currentHeight = content.getBoundingClientRect().height
+
+            if(open){
+                open = !open
+                content.animate([{height : '0px', padding:'0px'}], {duration : 300, fill : 'forwards'})
+                arrow.animate([{transform : 'rotate(0deg)'}], {duration:200, fill:'forwards'})
+
+            }
+            else{
+                open = !open
+                content.animate([{height : `${originalHeight}px`, padding:'14px 0px'}], {duration : 300, fill : 'forwards'})
+                arrow.animate([{transform : 'rotate(180deg)'}], {duration:200, fill:'forwards'})
+            }
+           
+            
+        }
+    })
+</script>
