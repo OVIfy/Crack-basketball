@@ -7,7 +7,7 @@ import Heading from "@compo/about/Heading.astro";
 import ColorCard from "@compo/about/ColorCard.astro";
 import Portfolio from "@compo/about/Portfolio.astro";
 import TheFooter from "@layouts/TheFooter.astro";
-import Button from "@compo/blocks/Button.tsx";
+import Button from "@compo/blocks/Button";
 import IconDeck from "@compo/blocks/IconDeck.astro";
 import Svg from "@layouts/svg.astro";
 import IconBox from "@compo/blocks/IconBox";
@@ -421,10 +421,10 @@ import Visualizer from '@compo/about/Visualizer';
     <TheFooter slot="footer"/>
 </Layout>
 <script>
-    let heroArrow = document.querySelector('.hero-arrow') as HTMLElement
-    let overview = document.querySelector('.hero-section') as HTMLElement
-    let overviewTop = overview.getBoundingClientRect().bottom
-    let heroTop = heroArrow.getBoundingClientRect().top
+    // let heroArrow = document.querySelector('.hero-arrow') as HTMLElement
+    // let overview = document.querySelector('.hero-section') as HTMLElement
+    // let overviewTop = overview.getBoundingClientRect().bottom
+    // let heroTop = heroArrow.getBoundingClientRect().top
 
     // heroArrow.onclick = () => {
     //     window.scrollTo({top:overviewTop, behavior:'smooth'})
