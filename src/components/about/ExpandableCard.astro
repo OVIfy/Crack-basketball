@@ -29,7 +29,6 @@ const {title, content, role, open = "0"} = Astro.props
         let header = expandableCard.querySelector('.header') as HTMLElement
         let content = expandableCard.querySelector('.content') as HTMLElement
         let crossLine = expandableCard.querySelector('.cross-line') as HTMLElement
-        let originalHeight = content.getBoundingClientRect().height //we store the original height of each expandable card
         lastExpandableCard = allExpandableCards[0]
         
         if( allExpandableCards[0] == expandableCard){
@@ -41,7 +40,7 @@ const {title, content, role, open = "0"} = Astro.props
 
         
         header.onclick = () => {
-            
+            console.log('expandaBle card header clicked')
             
             let open = header.parentElement && Boolean(Number(header.parentElement.getAttribute("data-open")))
 
