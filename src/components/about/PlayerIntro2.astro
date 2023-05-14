@@ -11,7 +11,7 @@ const {position, team, playerName, rebounds, points, assists, flip, quote, url} 
     <div style={`background-image: url('${url}');`} class="w-[25%] aspect-square bg-center bg-no-repeat bg-cover hidden lg:block xl:w-[35%]">
 
     </div>
-    <div class=" md:pt-16 md:pb-9 xl:px-24 lg:w-[75%]">
+    <div class=" md:pt-16 md:pb-9 xl:px-24 lg:w-[75%] text-center">
         <div class="px-8 md:px-10">
              <div class="flex flex-col items-center md:items-start gap-6 relative pt-4">
             <Heading level="1">Featured player</Heading>
@@ -25,7 +25,7 @@ const {position, team, playerName, rebounds, points, assists, flip, quote, url} 
             
             <p class="leading-5 w-[80%] max-w-[600px] text-center md:text-left box relative text-[14px] md:text-[16px]">{quote}</p>
 
-            <div class="flex mt-4 gap-10 md:absolute md:top-[-24px] md:right-8">
+            <div class="md:flex mt-4 gap-10 md:absolute md:top-[-24px] md:right-8 hidden">
                 <div>
                     <p class="text-[12px] font-bold text-[#bdbcbc]">Position</p>
                     <p class="text-[16px] font-hand-sofia leading-6 mt-1">{position}</p>
@@ -38,9 +38,11 @@ const {position, team, playerName, rebounds, points, assists, flip, quote, url} 
             </div>
         </div>
         </div>
+
+        <button class="text-[11px] my-4 inline-block text-white font-bold bg-[url('/images/icons/abt-btn.svg')] px-20 py-5 bg-center bg-no-repeat bg-contain md:hidden">View Design Prototype</button>
     
         <p class="text-gray-300 font-bold hidden md:block mt-12 px-8 md:px-10">Project Duration</p>
-        <div class="flex justify-around items-center bg-[#333333] md:bg-transparent mt-4 md:justify-start px-8 md:px-10">
+        <div class="hidden md:flex justify-around items-center bg-[#333333] md:bg-transparent mt-4 md:justify-start px-8 md:px-10">
             <RatingCard name="Research & Design" number={rebounds} style="text-white md:text-black"/>
             <div class="h-[30px] w-[1px]  md:hidden"></div>
             <RatingCard name="Development" number={points} style="text-white md:text-black"/>
@@ -50,7 +52,15 @@ const {position, team, playerName, rebounds, points, assists, flip, quote, url} 
             <TwoFace style={`transform rotate-[90deg] hover:cursor-pointer right-0 hidden md:block`} ratio='square' width="50px" url1="/images/icons/icon-arrow-b.svg" url2="/images/icons/icon-arrow-c.svg"/>
         </div>
 
-        
+        <div class="md:hidden grid grid-rows-1 grid-cols-3 justify-around bg-[#333333] md:bg-transparent mt-4 md:justify-start ">
+
+            <RatingCard name="Duration" style="text-white md:text-black" style="bg-white"/>
+            <RatingCard name="Research & Design" number={points + 'days'} style="text-white md:text-black"/>
+            <RatingCard name="Development" number={assists + 'days'} style="text-white md:text-black"/>
+
+
+            <!-- <TwoFace style={`transform rotate-[90deg] hover:cursor-pointer right-0 hidden md:block`} ratio='square' width="50px" url1="/images/icons/icon-arrow-b.svg" url2="/images/icons/icon-arrow-c.svg"/> -->
+        </div>
     </div>
 </div>
 
