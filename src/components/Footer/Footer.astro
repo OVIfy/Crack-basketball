@@ -12,7 +12,7 @@ const {footerStyle}  =  Astro.props
         <slot />
     </div>
     <div class="md:py-10 flex flex-col md:flex-row md:items-center md:justify-center relative">
-        <div class="py-6 md:p-[1px]  lg:mx-20 text-center  md:bg-gradient-to-r inline-block from-secondary-color to-neutral-color md:absolute right-3">
+        <div class="py-6 md:p-[1px]  lg:mx-20 text-center  md:bg-gradient-to-r inline-block border-[1px] border-white md:absolute right-3">
             <IconDeck
              urls={[
                  '/images/icons/icon-twitter.svg',
@@ -21,9 +21,9 @@ const {footerStyle}  =  Astro.props
                  '/images/icons/icon-door.svg'
              ]} 
              width="12px"
-             contStyle="flex-row p-2"
+             contStyle="flex-row p-2 bg-transparent"
          />
         </div>
-        <p class="text-[10px] lg:text-[16px] text-center justify-self-start text-secondary-color font-bold py-6 md:p-0 md:border-0 border-y-[1px] border-y-secondary-color border-opacity-50">Designed and Developed in <span class="text-neutral-color">CrackLabs</span></p>
+        <p class="text-[10px] lg:text-[16px] text-center justify-self-start text-white font-bold py-6 md:p-0 md:border-0 border-y-[1px] border-y-secondary-color border-opacity-50">Designed and Developed in <span class="text-[#7D7D7D]">CrackLabs</span></p>
     </div>
 </footer>
