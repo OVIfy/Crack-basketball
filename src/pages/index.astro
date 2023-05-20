@@ -17,6 +17,7 @@ import Heading from '@compo/Typography/Heading.astro';
 //layouts
 import PlayerIntro from '@layouts/PlayerIntro.astro';
 import TextImage from '@layouts/TextImage.astro';
+import PreLoader from '@layouts/PreLoader.astro';
 
 //react
 import Showcase from '@compo/blocks/Showcase.jsx';
@@ -30,6 +31,8 @@ import Line from '@compo/blocks/Line.astro'
 <!-- Below is your "component template." It's just HTML, but with
      some magic sprinkled in to help you build great templates. -->
 <Layout>
+  <PreLoader />
+ 
   <Header slot="header"/>
   <!-- <h1>Hello world</h1> -->
   <!-- <Counter client:visible/> -->
@@ -344,4 +347,3 @@ import Line from '@compo/blocks/Line.astro'
 
   <!-- <Framer client:visible/> -->
 </Layout>
-  

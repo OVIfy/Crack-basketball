@@ -82,34 +82,34 @@ const Showcase = () => {
                 <motion.div className='flex justify-between px-4 pb-[36px] md:pb-0 gap-4 md:gap-16' layout="position" transition={{ ease: "easeOut", duration: 0.5 }}>
                     <div className="flex flex-col mt-4 gap-10  justify-between md:top-[-24px]">
                         <div>
-                            <p className="text-[12px] font-bold text-gray-300">Position</p>
+                            <p className="text-[12px] font-bold text-[#bdbcbc]">Position</p>
                             <p className="text-[16px] font-hand-sofia leading-6 mt-1">{data[index].position}</p>
                         </div>
 
                         <div>
-                            <p className="text-[12px] font-bold text-gray-300">Team</p>
+                            <p className="text-[12px] font-bold text-[#bdbcbc]">Team</p>
                             <p className="text-[16px] font-hand-sofia leading-6 mt-1">{data[index].team}</p>
                         </div>
 
                         <div>
-                            <p className="text-[12px] font-bold text-gray-300">Height</p>
+                            <p className="text-[12px] font-bold text-[#bdbcbc]">Height</p>
                             <p className="text-[16px] font-hand-sofia leading-6 mt-1">{data[index].height}</p>
                         </div>
                     </div>
 
                     <div className="flex flex-col mt-4 gap-10  justify-between md:top-[-24px]">
                         <div>
-                            <p className="text-[12px] font-bold text-gray-300">Rebounds</p>
+                            <p className="text-[12px] font-bold text-[#bdbcbc]">Rebounds</p>
                             <p className="text-[16px] font-hand-sofia leading-6 mt-1">{data[index].rebounds}</p>
                         </div>
                         
                         <div>
-                            <p className="text-[12px] font-bold text-gray-300">Points</p>
+                            <p className="text-[12px] font-bold text-[#bdbcbc]">Points</p>
                             <p className="text-[16px] font-hand-sofia leading-6 mt-1">{data[index].points}</p>
                         </div>
 
                         <div>
-                            <p className="text-[12px] font-bold text-gray-300">Assist</p>
+                            <p className="text-[12px] font-bold text-[#bdbcbc]">Assist</p>
                             <p className="text-[16px] font-hand-sofia leading-6 mt-1">{data[index].assists}</p>
                         </div>
                     </div>

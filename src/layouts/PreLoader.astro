@@ -1,0 +1,37 @@
+---
+
+---
+<div class="fixed top-0 left-0 w-screen h-screen bg-[#B9BBBA] z-50 flex pre-loader">
+    <div class="left w-[40%] h-full flex items-center justify-end text-[40px] lg:text-[80px] opacity-0">
+        <p class="pre-text text-[#919191] font-semibold font-hand-dancing ">0%</p>
+    </div>
+    <div class="right w-[60%] h-full bg-[#B9BBBA] bg-[url('/images/pre-bg.svg')] bg-center bg-contain bg-no-repeat opacity-0"></div>
+</div>
+<script>
+    import { animate } from "framer-motion/dom"
+
+    document.querySelector('body').style.overflow = 'hidden'
+    const text = document.querySelector('.pre-text') as HTMLElement
+
+    const fadeInSequence = [
+        [".right", { opacity: [0, 1] }, { type: "spring", duration : 2 }],
+        [".left", { opacity: [0, 1] }, { type: "spring", duration : 2 }],
+    ] 
+
+    window.onload = ()=>{
+        animate(fadeInSequence).then(async ()=>{
+            await animate(0, 100, {
+                onUpdate: latest => {
+                    text.innerText = Math.round(latest) + "%"
+                },
+                duration: 6,
+                delay : 2
+            })
+
+            await animate(".pre-loader",{x: [0, window.screen.width] }, { type: "spring", duration : 2, delay : 2 })
+            document.querySelector('body').style.overflow = 'auto'
+        });
+    }
+   
+
+</script>
