@@ -15,13 +15,6 @@
     document.querySelector('body').style.overflow = 'hidden'
     const text = document.querySelector('.pre-text') as HTMLElement
 
-    const fadeInSequence = [
-        [".right", { opacity: [0, 1] }, { type: "spring", duration : 2 }],
-        [".left", { opacity: [0, 1] }, { type: "spring", duration : 2 }],
-    ] 
-
-    animate(fadeInSequence);
-
     window.onload = async ()=>{
         await animate(0, 100, {
                 onUpdate: latest => {
@@ -34,6 +27,20 @@
             await animate(".pre-loader",{x: [0, window.screen.width] }, { type: "spring", duration : 2, delay : 3 })
             document.querySelector('body').style.overflow = 'auto';
     }
+
+    const fadeInSequence = [
+        [".right", { opacity: [0, 1] }, { type: "spring", duration : 2}],
+        [".left", { opacity: [0, 1] }, { type: "spring", duration : 2 }],
+    ] 
+
+   
+
+    
+
+    await animate(fadeInSequence)
+    animate(".left", {opacity : [0,1,0]}, {repeat : Infinity, duration: 3})
+
+   
    
 
 </script>
