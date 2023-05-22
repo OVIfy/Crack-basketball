@@ -10,9 +10,9 @@ const {index} = Astro.props
         <div class="hidden md:flex justify-between items-center">
             <TwoFace ratio='slim' width="129px" url1="/images/icons/icon-espn-b.svg" url2="/images/icons/icon-espn-c.svg"/>
             <ul class="sm:flex items-center justify-center hidden gap-8 md:gap-16">
-                <li><a href="/" class:list={["desk-link transition-all duration-700 hover:cursor-pointer hover:text-neutral-color font-bold", index == 0 && "text-neutral-color"]}>Home</a></li>
-                <li><a href="/about" class:list={["desk-link transition-all duration-700 hover:cursor-pointer hover:text-neutral-color font-bold", index == 1 && "text-neutral-color"]}>About</a></li>
-                <li><a href="/about/#contact" class:list={["text-white desk-link transition-all duration-700 hover:cursor-pointer bg-no-repeat font-bold py-2 px-4 inline-block bg-[url('/images/icons/icon-contact-btn.svg')]", index == 2 && "text-white"]}>Contact Us</a></li>
+                <li><a href="/" class:list={["desk-link transition-all duration-700 hover:cursor-pointer text-neutral-color font-bold", index == 0 && "text-[#333333]"]}>Home</a></li>
+                <li><a href="/about" class:list={["desk-link transition-all duration-700 hover:cursor-pointer text-neutral-color font-bold", index == 1 && "text-[#333333]"]}>About</a></li>
+                <li><a href="/about/#contact" class:list={["text-whiteq desk-link transition-all duration-700 hover:cursor-pointer bg-no-repeat font-bold py-2 px-4 inline-block bg-[url('/images/icons/icon-contact-btn.svg')]", index == 2 && "text-white"]}>Contact Us</a></li>
             </ul>
             <TwoFace ratio='rect' width="70px" url1="/images/icons/icon-nba-b.svg" url2="/images/icons/icon-nba-c.svg"/>
         </div>
