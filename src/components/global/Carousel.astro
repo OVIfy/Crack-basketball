@@ -47,6 +47,7 @@ const {headerText, HeaderType = '3', carouselStyle, variant = "1", count = '300'
     }
 </style>
 <script>
+    const swishAudio = new Audio('/audio/swish.mp3')
     class Carousel{
         carouselElement
         rightArrow
@@ -92,11 +93,13 @@ const {headerText, HeaderType = '3', carouselStyle, variant = "1", count = '300'
         }
 
         moveCarouselLeft(){
+            swishAudio.play()
             this.carouselElement.style.scrollBehavior = 'smooth'
             this.carouselElement.scrollLeft += this.count
         }
 
         moveCarouselRight(){
+            swishAudio.play()
             this.carouselElement.style.scrollBehavior = 'smooth'
             this.carouselElement.scrollLeft -= this.count
         }

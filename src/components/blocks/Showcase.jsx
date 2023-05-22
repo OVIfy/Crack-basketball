@@ -1,17 +1,6 @@
 import {useState, useEffect} from 'react'
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
 
-const Heading = (props) => {
-    return(
-        <motion.h1 {...props}>{props.children}</motion.h1>
-    )
-}
-
-const P = ({children}) => {
-    return(
-        <motion.p layout="position">children</motion.p>
-    )
-}
 
 const data = [
     {position : 'Point Guard', rebounds : '3.7', team : 'Los Angeles Lakers', height : '6 ft 4 in', assists : '4.2', points : '16.9', url : '/images/featured/1.gif', name : 'Jamal Murray', animate : {opacity : [0,1], x:[-20, 0], y: [-20, 0]}},
@@ -26,9 +15,8 @@ const data = [
 
 ]
 
-
-
 const Showcase = () => {
+
     useEffect(()=>{
         data.forEach(d => {
             const img = new Image()
@@ -39,7 +27,18 @@ const Showcase = () => {
 
     const [index, setIndex] = useState(0)
 
+    const playAudio = async () => {
+        const bounceAudio = new Audio('/audio/bounce.mp3')
+        bounceAudio.play()
+    }
+
+    const playSwish = async () => {
+        const swishAudio = new Audio('/audio/swish.mp3')
+        swishAudio.play()
+    }
+
     const moveForward = () => {
+        playSwish()
         if(index == data.length - 1)
             setIndex(0)
 
@@ -48,6 +47,7 @@ const Showcase = () => {
     }
 
     const moveBackward = () => {
+        playSwish()
         if(index==0)
             setIndex(data.length - 1)
         if(index > 0)

@@ -20,7 +20,7 @@ import Carousel from '@compo/global/Carousel.astro';
 import Visualizer from '@compo/about/Visualizer';
 ---
 <Layout title="About Us">
-    <Header slot="header" index="1"/>
+    <Header slot="header" index={1}/>
 
     <!-- <PreAbout /> -->
 
@@ -30,7 +30,7 @@ import Visualizer from '@compo/about/Visualizer';
             position="Small Forward"
             team="Los Angeles Lakers"
             rebounds="10 days"
-            points="10 days"
+            points="10"
             assists="8"
             quote="Pencil Hoops is a website featuring stunning pencil sketches of NBA players and moments, designed for a community of NBA fans."
             url="/images/about/about-hero.jpg"
@@ -248,7 +248,7 @@ import Visualizer from '@compo/about/Visualizer';
                 <h3 class="font-semibold mb-4 md:text-[24px]">Tools</h3>
                 <p class="opacity-50 uppercase tracking-[5px]">We Shape Our <span class="text-neutral-color">Tools</span> To Shape Us</p>
 
-                <div class="flex md:justify-between flex-wrap gap-4 md:gap-8 mt-[30px] lg:mt-[48px]">
+                <div class="flex md:justify-between flex-wrap gap-6 md:gap-8 mt-[30px] lg:mt-[48px]">
                     <img src="/images/icons/icon-astro.svg">
                     <img src="/images/icons/icon-tail.svg">
                     <img src="/images/icons/icon-notion.svg">
@@ -262,10 +262,10 @@ import Visualizer from '@compo/about/Visualizer';
     <!-- Meet THE TEAM -->
     <section class="text-secondary-color my-8 px-4 md:mx-[80px]">
         <div class="md:mb-[80px]">
-            <h2 class="text-[24px] text-center sm:text-left md:text-[56px] font-bold leading-[32px] md:leading-[70px]">Meet the <br class="hidden md:inline-block"> Pencil Hoops <span class="text-[#7D7D7D] md:underline">Team</span></h2>
+            <h2 class="text-[24px] text-center text-black sm:text-left md:text-[56px] font-bold leading-[32px] md:leading-[70px]">Meet the <br class="hidden md:inline-block"> Pencil Hoops <span class="text-[#7D7D7D] md:underline">Team</span></h2>
         </div>
 
-        <Carousel count="400" variant="2" headerText="The Deeeep Pull-Up 3" HeaderType='3' carouselStyle="pb-[5px] flex md:gap-4 md:pt-[32px]">
+        <Carousel count="400" variant="2" headerText="The Deeeep Pull-Up 3" HeaderType='3' carouselStyle="pb-[20px] flex md:gap-4 md:pt-[32px]">
             <Portfolio 
                 name="Kamil Oseni"
                 title="UX Researcher, Human Interface & Interaction Designer"
@@ -303,7 +303,7 @@ import Visualizer from '@compo/about/Visualizer';
           </Carousel>
 
         <div class="md:mt-[80px]">
-            <h3 class="font-semibold mb-4 md:mb-[56px] text-[24px]">Pre-Launch Feedback</h3>
+            <h3 class="font-semibold mb-4 md:mb-[56px] text-[24px] text-black">Pre-Launch Feedback</h3>
 
             <div class="md:hidden">
                 <ExpandableCard 
