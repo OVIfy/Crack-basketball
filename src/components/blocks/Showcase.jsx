@@ -3,8 +3,8 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
 
 
 const data = [
-    {position : 'Point Guard', rebounds : '3.7', team : 'Los Angeles Lakers', height : '6 ft 4 in', assists : '4.2', points : '16.9', url : '/images/featured/1.gif', name : 'Jamal Murray', animate : {opacity : [0,1], x:[-20, 0], y: [-20, 0]}},
-    {position : 'Power Forward', rebounds : '7.1', team : 'Dollar Mavericks', height : '6 ft 10 in', assists : '4.3', points : '27.3', url : '/images/featured/2.gif', name : 'Kevin Durant', animate : {opacity : [0.1,1], x:[-20, 0], y:[50, 0]}},
+    {position : 'Point Guard', rebounds : '3.7', team : 'Denver Nuggets', height : '6 ft 4 in', assists : '4.2', points : '16.9', url : '/images/featured/1.gif', name : 'Jamal Murray', animate : {opacity : [0,1], x:[-20, 0], y: [-20, 0]}},
+    {position : 'Power Forward', rebounds : '7.1', team : 'Phoenix Suns', height : '6 ft 10 in', assists : '4.3', points : '27.3', url : '/images/featured/2.gif', name : 'Kevin Durant', animate : {opacity : [0.1,1], x:[-20, 0], y:[50, 0]}},
     {position : 'Small Forward', rebounds : '7.5', team : 'Los Angeles Lakers', height : '6 ft 9 in', assists : '7.3', points : '27.2', url : '/images/featured/3.gif', name : 'Lebron James', animate : {opacity : [0.1,1], x:[20, 0], y:[20, 0]}},
     {position : 'Small Forward', rebounds : '5.6', team : 'Retired', height : '6 ft 8 in', assists : '4.4', points : '19.6', url : '/images/featured/4.gif', name : 'Tracy McGrady', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
     {position : 'Shooting Guard', rebounds : '6.4', team : 'Los Angeles Clppers', height : '6 ft 7 in', assists : '3.0', points : '19.6', url : '/images/featured/5.gif', name : 'Kawhi Leonard', animate : {opacity : [0,1], x:[0, 0], y:[100, 0]}},
