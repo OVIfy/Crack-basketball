@@ -2,18 +2,31 @@ import {useState, useEffect} from 'react'
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
 
 
-const data = [
-    {position : 'Point Guard', rebounds : '3.7', team : 'Denver Nuggets', height : '6 ft 4 in', assists : '4.2', points : '16.9', url : '/images/featured/1.gif', name : 'Jamal Murray', animate : {opacity : [0,1], x:[-20, 0], y: [-20, 0]}},
-    {position : 'Power Forward', rebounds : '7.1', team : 'Phoenix Suns', height : '6 ft 10 in', assists : '4.3', points : '27.3', url : '/images/featured/2.gif', name : 'Kevin Durant', animate : {opacity : [0.1,1], x:[-20, 0], y:[50, 0]}},
-    {position : 'Small Forward', rebounds : '7.5', team : 'Los Angeles Lakers', height : '6 ft 9 in', assists : '7.3', points : '27.2', url : '/images/featured/3.gif', name : 'Lebron James', animate : {opacity : [0.1,1], x:[20, 0], y:[20, 0]}},
-    {position : 'Small Forward', rebounds : '5.6', team : 'Retired', height : '6 ft 8 in', assists : '4.4', points : '19.6', url : '/images/featured/4.gif', name : 'Tracy McGrady', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
-    {position : 'Shooting Guard', rebounds : '6.4', team : 'Los Angeles Clppers', height : '6 ft 7 in', assists : '3.0', points : '19.6', url : '/images/featured/5.gif', name : 'Kawhi Leonard', animate : {opacity : [0,1], x:[0, 0], y:[100, 0]}},
-    {position : 'Shooting Guard', rebounds : '60.2', team : 'Retired', height : '6 ft 6 in', assists : '3.3', points : '30.1', url : '/images/featured/6.gif', name : 'Micheal Jordan', animate : {opacity : [0,1], x:[-100, 0], y:[0, 0]}},
-    {position : 'Small Forward', rebounds : '10.0', team : 'Retired', height : '6 ft 11 in', assists : '3.7', points : '17.8', url : '/images/featured/7.gif', name : 'Kevin Garnett', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
-    {position : 'Shooting Guard', rebounds : '5.2', team : 'Retired', height : '6 ft 6 in', assists : '4.7', points : '25.0', url : '/images/featured/8.gif', name : 'Kobe Bryant', animate : {opacity : [0,1], x:[-40, 0], y:[-40, 0]}},
-    {position : 'Center', rebounds : '10.8', team : 'Retired', height : '6 ft 11 in', assists : '3.0', points : '19.0', url : '/images/featured/9.gif', name : 'Tim Duncan', animate : {opacity : [0,1], x:[-20, 0], y:[20, 0]}},
+// const data = [
+//     {position : 'Point Guard', rebounds : '3.7', team : 'Denver Nuggets', height : '6 ft 4 in', assists : '4.2', points : '16.9', url : '/images/featured/1.gif', name : 'Jamal Murray', animate : {opacity : [0,1], x:[-20, 0], y: [-20, 0]}},
+//     {position : 'Power Forward', rebounds : '7.1', team : 'Phoenix Suns', height : '6 ft 10 in', assists : '4.3', points : '27.3', url : '/images/featured/2.gif', name : 'Kevin Durant', animate : {opacity : [0.1,1], x:[-20, 0], y:[50, 0]}},
+//     {position : 'Small Forward', rebounds : '7.5', team : 'Los Angeles Lakers', height : '6 ft 9 in', assists : '7.3', points : '27.2', url : '/images/featured/3.gif', name : 'Lebron James', animate : {opacity : [0.1,1], x:[20, 0], y:[20, 0]}},
+//     {position : 'Small Forward', rebounds : '5.6', team : 'Retired', height : '6 ft 8 in', assists : '4.4', points : '19.6', url : '/images/featured/4.gif', name : 'Tracy McGrady', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
+//     {position : 'Shooting Guard', rebounds : '6.4', team : 'Los Angeles Clppers', height : '6 ft 7 in', assists : '3.0', points : '19.6', url : '/images/featured/5.gif', name : 'Kawhi Leonard', animate : {opacity : [0,1], x:[0, 0], y:[100, 0]}},
+//     {position : 'Shooting Guard', rebounds : '60.2', team : 'Retired', height : '6 ft 6 in', assists : '3.3', points : '30.1', url : '/images/featured/6.gif', name : 'Micheal Jordan', animate : {opacity : [0,1], x:[-100, 0], y:[0, 0]}},
+//     {position : 'Small Forward', rebounds : '10.0', team : 'Retired', height : '6 ft 11 in', assists : '3.7', points : '17.8', url : '/images/featured/7.gif', name : 'Kevin Garnett', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
+//     {position : 'Shooting Guard', rebounds : '5.2', team : 'Retired', height : '6 ft 6 in', assists : '4.7', points : '25.0', url : '/images/featured/8.gif', name : 'Kobe Bryant', animate : {opacity : [0,1], x:[-40, 0], y:[-40, 0]}},
+//     {position : 'Center', rebounds : '10.8', team : 'Retired', height : '6 ft 11 in', assists : '3.0', points : '19.0', url : '/images/featured/9.gif', name : 'Tim Duncan', animate : {opacity : [0,1], x:[-20, 0], y:[20, 0]}},
 
-]
+// ]
+
+const data = [
+        {position : 'Point Guard', rebounds : '3.7', team : 'Denver Nuggets', height : '6 ft 4 in', assists : '4.2', points : '16.9', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576387/1_nqcbr6.gif', name : 'Jamal Murray', animate : {opacity : [0,1], x:[-20, 0], y: [-20, 0]}},
+        {position : 'Power Forward', rebounds : '7.1', team : 'Phoenix Suns', height : '6 ft 10 in', assists : '4.3', points : '27.3', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694577053/2_zfpedy.gif', name : 'Kevin Durant', animate : {opacity : [0.1,1], x:[-20, 0], y:[50, 0]}},
+        {position : 'Small Forward', rebounds : '7.5', team : 'Los Angeles Lakers', height : '6 ft 9 in', assists : '7.3', points : '27.2', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576387/3_o7zpez.gif', name : 'Lebron James', animate : {opacity : [0.1,1], x:[20, 0], y:[20, 0]}},
+        {position : 'Small Forward', rebounds : '5.6', team : 'Retired', height : '6 ft 8 in', assists : '4.4', points : '19.6', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576385/4_aqlucn.gif', name : 'Tracy McGrady', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
+        {position : 'Shooting Guard', rebounds : '6.4', team : 'Los Angeles Clppers', height : '6 ft 7 in', assists : '3.0', points : '19.6', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576385/5_romewk.gif', name : 'Kawhi Leonard', animate : {opacity : [0,1], x:[0, 0], y:[100, 0]}},
+        {position : 'Shooting Guard', rebounds : '60.2', team : 'Retired', height : '6 ft 6 in', assists : '3.3', points : '30.1', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576385/6_jpcbni.gif', name : 'Micheal Jordan', animate : {opacity : [0,1], x:[-100, 0], y:[0, 0]}},
+        {position : 'Small Forward', rebounds : '10.0', team : 'Retired', height : '6 ft 11 in', assists : '3.7', points : '17.8', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576384/7_aavftc.gif', name : 'Kevin Garnett', animate : {opacity : [0,1], x:[50, 0], y:[20, 0]}},
+        {position : 'Shooting Guard', rebounds : '5.2', team : 'Retired', height : '6 ft 6 in', assists : '4.7', points : '25.0', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576385/8_g8boqb.gif', name : 'Kobe Bryant', animate : {opacity : [0,1], x:[-40, 0], y:[-40, 0]}},
+        {position : 'Center', rebounds : '10.8', team : 'Retired', height : '6 ft 11 in', assists : '3.0', points : '19.0', url : 'https://res.cloudinary.com/di1hpsxqe/image/upload/v1694576386/9_bwbehh.gif', name : 'Tim Duncan', animate : {opacity : [0,1], x:[-20, 0], y:[20, 0]}},
+    
+    ]
 
 const Showcase = () => {
 
