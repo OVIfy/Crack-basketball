@@ -20,11 +20,10 @@
                 onUpdate: latest => {
                     text.innerText = Math.round(latest) + "%"
                 },
-                duration: 6,
-                delay : 3
+                duration: 3,
         })
 
-            await animate(".pre-loader",{x: [0, window.screen.width] }, { type: "spring", duration : 2, delay : 3 })
+            await animate(".pre-loader",{x: [0, window.screen.width] }, { type: "spring", duration : 2, delay : 1 })
             document.querySelector('body').style.overflow = 'auto';
     }
 
