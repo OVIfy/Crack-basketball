@@ -18,6 +18,9 @@ import TwoFace from '@compo/blocks/TwoFace.astro';
 import PlayerIntro2 from '@compo/about/PlayerIntro2.astro';
 import Carousel from '@compo/global/Carousel.astro';
 import Visualizer from '@compo/about/Visualizer';
+
+const showForm = Astro.locals.showForm
+console.log('showForm ' + showForm)
 ---
 <Layout title="About Us">
     <Header slot="header" index={1}/>
@@ -373,19 +376,27 @@ import Visualizer from '@compo/about/Visualizer';
                     <p class="text-[14px] mb-6"><span class="font-bold text-[#333333]">Phone</span> <br> <span class="opacity-50">+14379744373</span></p>
                 </div>
 
-                <form class="bg-[#333333] text-[11px] flex flex-col gap-4 pb-[18px] lg:w-[50%] lg:shadow-[black]/[0.3] lg:shadow-[0px_2px_5px] lg:px-[30px] lg:py-[24px]" action="/" method="post">
-                    <p class="text-[12px] md:text-[24px] leading-4 text-center font-bold mb-5 text-[#ffffff]">Contact Form</p>
-                    <input class="bg-transparent outline-none pb-2 border-b-[1px] border-b-secondary-color focus:border-opacity-100 placeholder:text-[#7d7d7d]  font-bold" name="Name" type="text" placeholder="Name">
-                    <input class="bg-transparent outline-none pb-2 border-b-[1px] border-b-secondary-color focus:border-opacity-100 placeholder:text-[#7d7d7d] font-bold" name="Name" type="email" placeholder="Email">
+                <form class="bg-[#333333] text-[11px] flex flex-col gap-4 pb-[18px] lg:w-[50%] lg:shadow-[black]/[0.3] lg:shadow-[0px_2px_5px] lg:px-[30px] lg:py-[24px]" method="post" action="#contact">
+                    { showForm == undefined && <p class="text-[12px] md:text-[24px] leading-4 text-center font-bold mb-5 text-[#ffffff]">Contact Form</p>
+                    <input required class="bg-transparent outline-none pb-2 border-b-[1px] border-b-secondary-color focus:border-opacity-100 placeholder:text-[#7d7d7d]  font-bold" name="name" type="text" placeholder="Name">
+                    <input required class="bg-transparent outline-none pb-2 border-b-[1px] border-b-secondary-color focus:border-opacity-100 placeholder:text-[#7d7d7d] font-bold" name="email" type="email" placeholder="Email">
                     <label class="text-[#7d7d7d] font-bold" for="message">Message</label>
                     <textarea 
                         id="message" 
-                        name="Message" 
+                        name="message"
+                        required
                         class="outline-none text-primary-color h-[109px]"
                     ></textarea>
                     <div class="self-center">
                         <Button>SEND MESSAGE</Button>
-                    </div>
+                    </div>}
+
+                    {
+                        showForm == false &&  <p class="font-bold text-[24px] md:text-[32px] text-gray-500 text-center -rotate-[10deg]">SENT</p>
+                    }
+                    {
+                        showForm == 'error' && <p class="font-semi-bold text-[16px] text-gray-500 text-center">Something unexpected happened <br/> please click the mail icon to send me a mail</p>
+                    }
                 </form>
                 <div class="hidden lg:flex lg:absolute left-0 top-0 items-center h-full">
                     <IconDeck
